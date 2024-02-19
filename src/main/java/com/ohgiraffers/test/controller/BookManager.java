@@ -34,29 +34,23 @@ public class BookManager {
         }
     }
 
-    public int searchBook(String title) {
-        //전달받은 도서 제목으로 도서를 검색하고 결과값 반환
+    public BookDTO searchBook(String title) {
+        // 전달받은 도서 제목으로 도서를 검색하고 결과값 반환
         for (int i = 0; i < booklist.size(); i++) {
             BookDTO book = booklist.get(i);
             if (book.getTitle().equalsIgnoreCase(title)) {
-                System.out.println("도서 번호: " + book.getbNo());
-                System.out.println("도서 제목: " + book.getTitle());
-                System.out.println("도서 장르: " + book.getCategory());
-                System.out.println("도서 저자: " + book.getAuthor());
-                return i; // 도서를 찾았을 때 해당 도서의 인덱스 반환
+                System.out.println(book.toString()); // BookDTO 객체의 toString() 메소드 호출하여 문자열 출력
+                return book; // 도서를 찾았을 때 해당 도서 객체 반환
             }
         }
         System.out.println("조회한 도서가 목록에 없습니다.");
-        return -1; // 도서를 찾지 못했을 때 -1 반환
+        return null; // 도서를 찾지 못했을 때 null 반환
     }
 
     public void printBook(int index) {
         if (index != -1) {
             BookDTO book = booklist.get(index);
-            System.out.println("도서 번호: " + book.getbNo());
-            System.out.println("도서 제목: " + book.getTitle());
-            System.out.println("도서 장르: " + book.getCategory());
-            System.out.println("도서 저자: " + book.getAuthor());
+            System.out.println(book.toString()); // BookDTO 객체의 toString() 메소드 호출하여 문자열 출력
         } else {
             System.out.println("조회된 도서가 목록에 없습니다.");
         }
